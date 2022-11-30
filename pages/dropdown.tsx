@@ -1,11 +1,13 @@
 import Head from 'next/head'
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
+import DropdownPopUp from '../components/DropdownPopUp';
+import { useClickOutside } from '../hooks/useClickOutside';
 import s from '../styles/dropdown.module.scss'
 
-export default function Dropdown() {
-    const [isOpen, setIsOpen] = useState(false);
-    const handleChange = () => { setIsOpen(!isOpen) }
-
+export default function Dropdown() {    
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+    const handleChange = () => { setIsOpen((state) => !state) }
+    
     return (
         <div className="">
             <Head>
@@ -14,13 +16,7 @@ export default function Dropdown() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <section className={s.wrapper}>
-                <button onClick={handleChange} className={s.btn}>V</button>
-
-                <div className={`${s.dropdown} ${isOpen ? s.show : s.hide}`}>
-                    <p>content</p>
-                </div>
-            </section>
+            <DropdownPopUp/>
         </div>
     )
 }
