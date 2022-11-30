@@ -1496,7 +1496,7 @@ export type LaunchProfileQueryVariables = Exact<{
 export type LaunchProfileQuery = { __typename?: 'Query', launch?: { __typename?: 'Launch', flight_number?: number | null, mission_name?: string | null, launch_year?: number | null, launch_success?: boolean | null, details?: string | null, launch_site?: { __typename?: 'LaunchSite', site_name?: string | null } | null, rocket?: { __typename?: 'LaunchRocket', rocket_name?: string | null, rocket_type?: string | null } | null, links?: { __typename?: 'LaunchLinks', flickr_images?: Array<string | null> | null } | null } | null };
 
 
-export const LaunchListDocument = gql`
+export const LaunchListDocumentQuery = gql`
     query LaunchList {
   launches {
     flight_number
@@ -1523,16 +1523,16 @@ export const LaunchListDocument = gql`
  */
 export function useLaunchListQuery(baseOptions?: Apollo.QueryHookOptions<LaunchListQuery, LaunchListQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<LaunchListQuery, LaunchListQueryVariables>(LaunchListDocument, options);
+        return Apollo.useQuery<LaunchListQuery, LaunchListQueryVariables>(LaunchListDocumentQuery, options);
       }
 export function useLaunchListLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<LaunchListQuery, LaunchListQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<LaunchListQuery, LaunchListQueryVariables>(LaunchListDocument, options);
+          return Apollo.useLazyQuery<LaunchListQuery, LaunchListQueryVariables>(LaunchListDocumentQuery, options);
         }
 export type LaunchListQueryHookResult = ReturnType<typeof useLaunchListQuery>;
 export type LaunchListLazyQueryHookResult = ReturnType<typeof useLaunchListLazyQuery>;
 export type LaunchListQueryResult = Apollo.QueryResult<LaunchListQuery, LaunchListQueryVariables>;
-export const LaunchProfileDocument = gql`
+export const LaunchProfileDocumentQuery = gql`
     query LaunchProfile($id: String!) {
   launch(id: $id) {
     flight_number
@@ -1572,11 +1572,11 @@ export const LaunchProfileDocument = gql`
  */
 export function useLaunchProfileQuery(baseOptions: Apollo.QueryHookOptions<LaunchProfileQuery, LaunchProfileQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<LaunchProfileQuery, LaunchProfileQueryVariables>(LaunchProfileDocument, options);
+        return Apollo.useQuery<LaunchProfileQuery, LaunchProfileQueryVariables>(LaunchProfileDocumentQuery, options);
       }
 export function useLaunchProfileLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<LaunchProfileQuery, LaunchProfileQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<LaunchProfileQuery, LaunchProfileQueryVariables>(LaunchProfileDocument, options);
+          return Apollo.useLazyQuery<LaunchProfileQuery, LaunchProfileQueryVariables>(LaunchProfileDocumentQuery, options);
         }
 export type LaunchProfileQueryHookResult = ReturnType<typeof useLaunchProfileQuery>;
 export type LaunchProfileLazyQueryHookResult = ReturnType<typeof useLaunchProfileLazyQuery>;
