@@ -1,3 +1,5 @@
+@use "./export/mixin" as m;
+
 .wrapper{
     position: relative;
     width: fit-content;
@@ -5,17 +7,8 @@
 }
 
 .btn {
-    border: 0ch;
     margin-top: 2rem;
-    color: white;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    background: rgb(0, 89, 255);
-    transition: all ease-in 0.5s;
-
-    &:hover {
-        background: rgb(0, 204, 17);
-    }
+    @include m.btn1;
 }
 
 .dropdown {
